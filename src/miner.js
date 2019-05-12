@@ -23,7 +23,12 @@ class Miner extends require('events') {
 		this._close = setTimeout(() => {
 			this.log(new Error('not logs from workers in to long'));
 			/*process.exit(1)*/;
-			start();
+			this.start().then(() => {
+				console.log('setup is done');
+			}).catch((e) => {
+				console.log(e);
+				process.exit(1);
+			});
 		}, 1000 * 60);
 	}
 
