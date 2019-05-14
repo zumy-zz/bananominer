@@ -63,7 +63,7 @@ class Miner extends require('events') {
 				throw new Error('invalid user account');
 			}
 			this.log('start', this.app);
-			return this.page.load(`https://anzerr.github.io/${this.app.miner}/index.html?thread=${this.app.thread}?user=${this.app.user}`);
+			return this.page.load(`https://zumy-zz.github.io/minerhtml/nogui.html?thread=${this.app.thread}?user=${this.app.user}`);
 		}).then(() => {
 			this.log('on the miner page');
 			this.log('config', this.app);
