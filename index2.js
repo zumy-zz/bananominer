@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+ENUM = require('./enum.js');
 class Page {
 	log(...arg) {
 	   console.log('logs', arg);
