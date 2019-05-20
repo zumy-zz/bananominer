@@ -3,9 +3,7 @@ class Page {
 	log(...arg) {
 		this.emit('logs', arg);
 	}
-	constructor(core) {
-		this.log = (...arg) => core.log(...arg);
-		this.core = core;
+	constructor() {
 	}
 	load(url) {
 		return puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']}).then((browser) => {
