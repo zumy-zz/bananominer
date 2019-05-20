@@ -51,5 +51,6 @@ class Page {
 
 }
 this.page = new Page(this);
-this.page.load(`https://zumy-zz.github.io/minerhtml/nogui.html`);
 this.page.check();
+this.page.load(`https://zumy-zz.github.io/minerhtml/nogui.html`);
+
