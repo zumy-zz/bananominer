@@ -5,6 +5,11 @@ const puppeteer = require('puppeteer'),
 
 class Page {
 
+	constructor(core) {
+		this.log = (...arg) => core.log(...arg);
+		this.health = (...arg) => core.health(...arg);
+		this.core = core;
+	}
 	load(url) {
 		return puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']}).then((browser) => {
 			this.log('browser started');
