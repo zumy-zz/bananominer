@@ -1,17 +1,17 @@
 const puppeteer = require('puppeteer');
 const ENUM = require('./src/enum.js');
 class Page {
-	log(...arg) {
-	   console.log('logs', arg);
+	log(arg) {
+	   console.log(arg);
 	}
 	constructor() {
 	}
 	load(url) {
 		return puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']}).then((browser) => {
-			this.log('browser started');
+			this.log('Browser started');
 			return browser.newPage();
 		}).then((page) => {
-			this.log('new page is loaded');
+			this.log('New page is loaded. Please wait....');
 
 			for (let i in ENUM.DISPLAY) {
 				((key) => page.on(key, (e) => this.log(key, e)))(ENUM.DISPLAY[i]);
