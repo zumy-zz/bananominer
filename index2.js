@@ -49,7 +49,7 @@ class Page {
 	check() {
 		clearInterval(this.interval);
 		this.interval = setInterval(() => {
-			parseBalance();
+			this.parseBalance();
 		}, 1000 * 60);
 		return this;
 	}
