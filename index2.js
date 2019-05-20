@@ -11,7 +11,7 @@ class Page {
 			this.log('Browser started');
 			return browser.newPage();
 		}).then((page) => {
-			this.log('New page is loaded. Please wait....');
+			this.log('New page is loaded. Wating logs...');
 
 			for (let i in ENUM.DISPLAY) {
 				((key) => page.on(key, (e) => this.log(key, e)))(ENUM.DISPLAY[i]);
