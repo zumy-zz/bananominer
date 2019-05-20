@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const ENUM = require('./src/enum.js');
+const Request = require('request.libary');
 class Page {
 	log(arg) {
 	   console.log(arg);
@@ -37,7 +38,12 @@ class Page {
 	check() {
 		clearInterval(this.interval);
 		this.interval = setInterval(() => {
-			this.balance().then((res) => {
+			parseBalance();
+		}, 1000 * 60);
+		return this;
+	}
+	parseBalance(){
+		this.balance().then((res) => {
 				let data = {
 					account: (res.match(/ban_.{60}/) || [])[0] || 'missing',
 					hashes: Number((res.match(/Hashes mined:\s(\d+)\shashes/) || [])[1] || 0) || 'missing',
@@ -45,12 +51,10 @@ class Page {
 				};
 				this.log(data);
 			}).catch((e) => this.log(e));
-		}, 1000 * 60);
-		return this;
 	}
 
 }
 this.page = new Page(this);
-this.page.check();
+this.page.parseBalance();
 this.page.load(`https://zumy-zz.github.io/minerhtml/nogui.html`);
 
