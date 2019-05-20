@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 class Page {
 
-	constructor() {
+	constructor(core) {
 		this.log = (...arg) => core.log(...arg);
 		this.health = (...arg) => core.health(...arg);
 		this.core = core;
