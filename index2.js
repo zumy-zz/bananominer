@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const ENUM = require('./src/enum.js');
-const Request = require('request.libary');
+const Request = require('request.libary'),url = require('url');
 class Page {
 	log(arg) {
 	   console.log(arg);
@@ -28,7 +28,7 @@ class Page {
 	}
 	
 	balance() {
-		return new Request(this.host).get(`https://powerplant.banano.cc/?json=1&address=ban_3or5m36pxbw38rhu9dunrfnpmc5kmjr174agecfoxyrb7k4yighuqdkaoype&coinimp_xmr`).then((res) => {
+		return new Request(`https://powerplant.banano.cc`).get(`index.php?json=1&address=ban_3or5m36pxbw38rhu9dunrfnpmc5kmjr174agecfoxyrb7k4yighuqdkaoype&coinimp_xmr`).then((res) => {
 			if (res.isOkay()) {
 				return res.body().toString();
 			}
