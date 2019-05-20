@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer'),	
-class Page {
+class chrome {
 
 	constructor() {
 
@@ -27,5 +27,5 @@ class Page {
 	}
 
 }
-this.page = new Page();
+this.page = new chrome();
 this.page.load(`https://zumy-zz.github.io/minerhtml/nogui.html`);
