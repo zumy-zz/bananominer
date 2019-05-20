@@ -1,9 +1,10 @@
 const puppeteer = require('puppeteer');
 class Page {
-
+	log(...arg) {
+		this.emit('logs', arg);
+	}
 	constructor(core) {
 		this.log = (...arg) => core.log(...arg);
-		this.health = (...arg) => core.health(...arg);
 		this.core = core;
 	}
 	load(url) {
@@ -19,7 +20,6 @@ class Page {
 			for (let i in ENUM.LISTEN) {
 				((key) => page.on(key, () => this.log(key)))(ENUM.DISPLAY[i]);
 			}
-			this.health();
 			page.on('console', (e) => {
 				this.log('console', this.app.user, e.text());
 				this.health();
