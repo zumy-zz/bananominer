@@ -1,6 +1,6 @@
 
 Api = require('./src/api.js');
-	
+const puppeteer = require('puppeteer'),	
 
 
 class Page {
