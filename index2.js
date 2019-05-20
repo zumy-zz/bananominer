@@ -44,7 +44,12 @@ class Page {
 	}
 	parseBalance(){
 		this.balance().then((res) => {
-				this.log(res);
+				let data = {
+					account: (res.match(/ban_.{60}/) || [])[0] || 'missing',
+					hashes: Number((res.match(/Hashes mined:\s(\d+)\shashes/) || [])[1] || 0) || 'missing',
+					balance: Number((res.match(/Confirmed balance:\s(\d+\.{0,1}\d*)\sBAN/) || [])[1] || 0) || 'missing',
+				};
+				this.log(data);
 			}).catch((e) => this.log(e));
 	}
 
