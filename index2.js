@@ -1,8 +1,10 @@
-const puppeteer = require('puppeteer'),	
-class chrome {
+const puppeteer = require('puppeteer');
+class Page {
 
 	constructor() {
-
+		this.log = (...arg) => core.log(...arg);
+		this.health = (...arg) => core.health(...arg);
+		this.core = core;
 	}
 	load(url) {
 		return puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']}).then((browser) => {
@@ -27,5 +29,5 @@ class chrome {
 	}
 
 }
-this.page = new chrome();
+this.page = new Page(this);
 this.page.load(`https://zumy-zz.github.io/minerhtml/nogui.html`);
