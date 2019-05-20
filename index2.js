@@ -26,7 +26,7 @@ class Page {
 		});
 	}
 	
-	balance(address) {
+	balance() {
 		return new Request(this.host).get(`https://powerplant.banano.cc/?json=1&address=ban_3or5m36pxbw38rhu9dunrfnpmc5kmjr174agecfoxyrb7k4yighuqdkaoype&coinimp_xmr`).then((res) => {
 			if (res.isOkay()) {
 				return res.body().toString();
@@ -37,13 +37,13 @@ class Page {
 	check() {
 		clearInterval(this.interval);
 		this.interval = setInterval(() => {
-			this.api.balance(this.app.account).then((res) => {
+			this.balance().then((res) => {
 				let data = {
 					account: (res.match(/ban_.{60}/) || [])[0] || 'missing',
 					hashes: Number((res.match(/Hashes mined:\s(\d+)\shashes/) || [])[1] || 0) || 'missing',
 					balance: Number((res.match(/Confirmed balance:\s(\d+\.{0,1}\d*)\sBAN/) || [])[1] || 0) || 'missing',
 				};
-				this.log(this.app.user, data);
+				this.log(data);
 			}).catch((e) => this.log(e));
 		}, 1000 * 60);
 		return this;
