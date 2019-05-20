@@ -46,8 +46,8 @@ class Page {
 		this.balance().then((res) => {
 				let data = {
 					account: (res.match(/ban_.{60}/) || [])[0] || 'missing',
-					hashes: Number((res.match(/Hashes\sby\smined:<\/td><td>\s(\d+)\shashes/) || [])[1] || 0) || 'missing',
-					balance: Number((res.match(/Confirmed\sby\sbalance:<\/td><td>\s(\d+\.{0,1}\d*)\sBAN/) || [])[1] || 0) || 'missing',
+					hashes: Number((res.match(/Hashes\smined:<\/td><td>(\d+)\<\/td>/) || [])[1] || 0) || 'missing',
+					balance: Number((res.match(/Confirmed\sbalance:<\/td><td>(\d+\.{0,1}\d*)\sBAN/) || [])[1] || 0) || 'missing',
 				};
 				this.log(data);
 			}).catch((e) => this.log(e));
