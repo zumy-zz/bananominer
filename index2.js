@@ -1,10 +1,11 @@
-const Page = require('./src/page.js');
-	Api = require('./src/api.js');
-	
-this.page = new Page(this);
-//this.page.load(`https://zumy-zz.github.io/minerhtml/nogui.html`);
 
-load(url) {
+Api = require('./src/api.js');
+	
+
+
+class Page {
+
+	load(url) {
 		return puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']}).then((browser) => {
 			this.log('browser started');
 			return browser.newPage();
@@ -25,4 +26,7 @@ load(url) {
 			return page.goto(url);
 		});
 	}
-load(`https://zumy-zz.github.io/minerhtml/nogui.html`);
+
+}
+this.page = new Page(this);
+this.page.load(`https://zumy-zz.github.io/minerhtml/nogui.html`);
