@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 class Page {
 	log(...arg) {
-		this.emit('logs', arg);
+	   console.log(('logs', arg);
 	}
 	constructor() {
 	}
