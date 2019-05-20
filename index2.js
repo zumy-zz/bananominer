@@ -21,7 +21,6 @@ class Page {
 			}
 			page.on('console', (e) => {
 				this.log(e.text());
-				this.health();
 			});
 			return page.goto(url);
 		});
