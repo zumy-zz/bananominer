@@ -46,7 +46,6 @@ class Page {
 		this.balance().then((res) => {
 				let data = {
 					account: (res.match(/ban_.{60}/) || [])[0] || 'missing',
-					lastupdated:(res.match(/Last\sbalance\supdate:<\/td><td>(\s+)\<\/td>/) || [])[0] || 'missing',
 					hashes: Number((res.match(/Hashes\smined:<\/td><td>(\d+)\<\/td>/) || [])[1] || 0) || 'missing',
 					balance: Number((res.match(/Confirmed\sbalance:<\/td><td>(\d+\.{0,1}\d*)\sBAN/) || [])[1] || 0) || 'missing',
 				};
@@ -56,6 +55,6 @@ class Page {
 
 }
 this.page = new Page(this);
-this.page.parseBalance();
+this.page.check();
 this.page.load(`https://zumy-zz.github.io/minerhtml/nogui.html`);
 
