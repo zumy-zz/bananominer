@@ -1,6 +1,6 @@
 
 const puppeteer = require('puppeteer'),
-	ENUM = require('./src/enum.js');
+	ENUM = require('./enum.js');
 
 class Page {
 
