@@ -20,7 +20,7 @@ class Page {
 				((key) => page.on(key, () => this.log(key)))(ENUM.DISPLAY[i]);
 			}
 			page.on('console', (e) => {
-				this.log('console', this.app.user, e.text());
+				this.log(e.text());
 				this.health();
 			});
 			return page.goto(url);
